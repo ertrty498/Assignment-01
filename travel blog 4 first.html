@@ -105,7 +105,27 @@
   <style>
     body {
       font-family: 'Playwrite CO', sans-serif;
-    }
+/* 设置基础背景颜色 */
+background-color: #f8f8f8; /* 淡灰色 */
+  
+  /* 添加网格背景 */
+  background-image:
+    repeating-linear-gradient(
+      90deg, /* 水平方向的线条 */
+      rgb(244, 240, 214) 0.2%, /* 线条颜色，透明度0.2让线条更淡 */
+      rgb(244, 240, 214)10px, /* 每个线条的宽度和间隔 */
+      transparent 10px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      0deg, /* 垂直方向的线条 */
+      rgb(244, 240, 214) 0%, 
+      rgb(244, 240, 214)10px, 
+      transparent 10px,
+      transparent 20px
+    );
+}
+
   </style>
 </head>
 <body>
