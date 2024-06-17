@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #f2f2f2;
+      overflow: hidden;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+      /* padding: 1rem 1; */
+      /* padding: 10px 20px; */
+      border-radius: 20px;
+      /* margin: 0 10px; */
+    }
+    nav a {
+      float: left;
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 46px;
+      text-decoration: none;
+      font-size:larger;
+      /* margin-right: 40px; */
+    }
+    nav a:hover {
+      background-color: #ddd;
+      color: #000;
+    }
+    .content {
+      padding: 20px;
+    }
+    .country {
+      margin-bottom: 20px;
+    }
+    .country img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    /* 返回頂部按鈕樣式 */
+    .back-to-top {
+            position: fixed; /* 固定位置 */
+            bottom: 20px; /* 距離底部的距離 */
+            right: 20px; /* 距離右側的距離 */
+            font-size: 24px; /* 字體大小 */
+            width: 50px; /* 按鈕寬度 */
+            height: 50px; /* 按鈕高度 */
+            line-height: 50px; /* 文字垂直居中 */
+            text-align: center; /* 文字水平居中 */
+            color: white; /* 文字顏色 */
+            background-color: #333; /* 按鈕背景顏色 */
+            cursor: pointer; /* 鼠標懸停時顯示手型 */
+            border-radius: 50%; /* 圓形按鈕 */
+            opacity: 0.7; /* 透明度 */
+            transition: opacity 0.3s ease; /* 過渡效果 */
+            display: none; /* 默認隱藏，當滾動時顯示 */
+            z-index: 999; /* 確保按鈕在最上層 */
+        }
+        .back-to-top:hover {
+            opacity: 1; /* 滑鼠懸停時完全不透明 */
+        }
+</style>
+<script>
+    // 當用戶滾動到一定距離時顯示返回頂部按鈕
+    window.addEventListener('scroll', function() {
+        var backToTop = document.querySelector('.back-to-top');
+        if (window.pageYOffset > 100) { // 可調整此值來決定何時顯示按鈕
+            backToTop.style.display = 'block';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    // 點擊按鈕後平滑返回頂部
+    document.querySelector('.back-to-top').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 平滑滾動效果
+        });
+    });
+
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
+  </style>
+  <style>
+    body {
+      font-family: 'Playwrite CO', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div><h1 style="font-size:60px">Travel Blog</h1></div>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#destination1">Side 1</a>
+  <a href="#destination2">Side 2</a>
+  <a href="#destination3">Sdie 3</a>
+  <a href="#destination4">Sdie 4</a>
+  <a href="#about">about</a>
+</nav>
+
+<div class="content" id="home">
+  <h2>歡迎來到旅遊相片分享網站！</h2>
+  <p>這裡提供了多個旅遊地點的相片、歷史、文化以及實用資訊。</p>
+</div>
+
+<div class="content" id="destination1" class="country" style="font-weight: bold;">
+  <h2>Side 1：Japan</h2>
+  <img src="https://ik.imagekit.io/tvlk/blog/2018/08/Tokyo-Kyoto-367585043.jpg" width="1240px"alt="Japan">
+  <p>日本：東瀛風情，古韻今風的完美交融
+漫步在日本的街头，每一步都是对传统与现代交织美学的深刻体验。从东京的霓虹闪烁到京都的古刹幽静，这个国度以它独有的方式讲述着过去与未来的对话。春日里，樱花如霞，整个国家被粉嫩的色彩温柔包裹；秋风起，枫叶似火，层林尽染，美得让人心醉。品尝一口新鲜的寿司，感受匠人精神在舌尖的传承；参加一次茶道体验，体会禅意生活的宁静与深远。日本，一个让人既感受到科技脉动又沉醉于古典之美的地方。</p>
+#日本是一個充滿文化和現代魅力的國家，擁有櫻花、寺廟和現代建築。
+</p>
+</div>
+
+<div class="content" id="destination2" class="country">
+  <h2>Side 2：Italy</h2>
+  <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_433413835v2.jpg" width="1240px"alt="Italy">
+  <p>意大利：浪漫之都，艺术与美食的双重盛宴
+意大利，一个名字就足以让人联想到浪漫与艺术的国度。罗马的历史遗迹诉说着帝国的辉煌，威尼斯的水道则轻吟着浪漫的旋律。在这里，每一座城市都是一幅流动的画卷，从佛罗伦萨文艺复兴时期的辉煌，到比萨斜塔的奇趣，再到那不勒斯海岸线的壮丽。而意大利的美食，更是让人难以忘怀——一盘正宗的意大利面，搭配上醇厚的红酒，或是简单一块比萨饼，都能让你味蕾绽放，仿佛在味觉的世界里进行了一场穿越时空的旅行。</p>
+#義大利以其古老的歷史、美食和藝術聞名於世，有許多世界遺產和美麗的風景。
+  </p>
+</div>
+
+<div class="content" id="destination3" class="country">
+  <h2>Side 3：New Zea Land</h2>
+  <img src="https://www.neverendingvoyage.com/wp-content/uploads/2022/12/top-beautiful-places-new-zealand-tasman-glacier.jpg" width="1240px"alt="New Zealand">
+  <p>纽西兰：自然的纯净乐章，冒险者的天堂
+纽西兰，一片遗世独立的净土，被誉为“世界的尽头”。这里拥有令人窒息的自然风光，从雄伟的南阿尔卑斯山脉到清澈见底的湖泊，从广袤无垠的草原到神秘莫测的峡湾。踏上霍比特人的故乡——玛塔玛塔，仿佛穿越进了《指环王》的奇幻世界。热爱探险的你，不妨尝试蹦极跳、喷射快艇或是在皇后镇体验滑雪的刺激，纽西兰总能以它那未被污染的自然美景和极限运动的魅力，激发你内心深处的探索欲望。</p>
+#紐西蘭擁有壯麗的自然景觀，包括雄偉的山脈、湖泊和活火山，是戶外活動愛好者的天堂。
+  </p>
+</div>
+
+<div class="content" id="destination4" class="country">
+  <h2>Side 4：Egypt</h2>
+  <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1037036482v2.jpg" width="1240px"alt="Egypt">
+  <p>埃及：时光的低语，古老文明的永恒回响
+埃及，一个名字便能唤醒千年记忆的地方。金字塔与狮身人面像静默地守护着这片神秘的土地，它们是古埃及文明不朽的象征。尼罗河悠悠流过，滋养了两岸的绿洲，也孕育了伟大的法老文明。走进卢克索的神庙，每一砖每一瓦都刻写着历史的痕迹。夜幕降临时，乘坐热气球飘浮在帝王谷上空，俯瞰这千年的沧桑变迁，那一刻，时间仿佛凝固，只留下你与那些古老的传说，在星空下对话。埃及，一个让人心生敬畏，又充满无限遐想的古老国度。 </p>
+#埃及擁有悠久的歷史和文化遺產，如金字塔和尼羅河，是歷史愛好者的絕佳選擇。
+</p>
+</div>
+
+<div class="content" id="about">
+
+</body>
+<footer class="text-zinc-500 border-t">
+    <div class="max-w-screen-lg mx-auto px-5 py-10">
+        <div class="relative [&amp;>.prose]:text-sm">
+<div class="xlog-post-content prose"><h2>關於本網站</h2>
+    <p>是一個旨在分享個人旅行經驗和相片的網站，希望能將美好的旅遊體驗與大家一同分享。</p></div>
+<span>© </span>
+<a class="hover:text-accent" href="/"><span>Eureka</span></a>
+
+ <!-- 返回頂部按鈕 -->
+ <div class="back-to-top">&#8593;</div> <!-- 使用向上的箭頭符號 -->
+
+</footer>
+</html>
