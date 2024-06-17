@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅遊相片分享</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav {
+      background-color: #f2f2f2;
+      overflow: hidden;
+      border-bottom: 1px solid #ccc;
+    }
+    nav a {
+      float: left;
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #ddd;
+      color: #000;
+    }
+    .content {
+      padding: 20px;
+    }
+    .country {
+      margin-bottom: 20px;
+    }
+    .country img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    /* 返回頂部按鈕樣式 */
+    .back-to-top {
+            position: fixed; /* 固定位置 */
+            bottom: 20px; /* 距離底部的距離 */
+            right: 20px; /* 距離右側的距離 */
+            font-size: 24px; /* 字體大小 */
+            width: 50px; /* 按鈕寬度 */
+            height: 50px; /* 按鈕高度 */
+            line-height: 50px; /* 文字垂直居中 */
+            text-align: center; /* 文字水平居中 */
+            color: white; /* 文字顏色 */
+            background-color: #333; /* 按鈕背景顏色 */
+            cursor: pointer; /* 鼠標懸停時顯示手型 */
+            border-radius: 50%; /* 圓形按鈕 */
+            opacity: 0.7; /* 透明度 */
+            transition: opacity 0.3s ease; /* 過渡效果 */
+            display: none; /* 默認隱藏，當滾動時顯示 */
+            z-index: 999; /* 確保按鈕在最上層 */
+        }
+        .back-to-top:hover {
+            opacity: 1; /* 滑鼠懸停時完全不透明 */
+        }
+  </style>
+<script>
+    // 當用戶滾動到一定距離時顯示返回頂部按鈕
+    window.addEventListener('scroll', function() {
+        var backToTop = document.querySelector('.back-to-top');
+        if (window.pageYOffset > 100) { // 可調整此值來決定何時顯示按鈕
+            backToTop.style.display = 'block';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    // 點擊按鈕後平滑返回頂部
+    document.querySelector('.back-to-top').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 平滑滾動效果
+        });
+    });
+
+</script>
+</head>
+<body>
+
+<header>
+  <h1>旅遊相片分享</h1>
+</header>
+
+<nav>
+  <a href="#home">主頁</a>
+  <a href="#destination1">旅遊地點1</a>
+  <a href="#destination2">旅遊地點2</a>
+  <a href="#destination3">旅遊地點3</a>
+  <a href="#destination4">旅遊地點4</a>
+  <a href="#about">關於</a>
+</nav>
+
+<div class="content" id="home">
+  <h2>歡迎來到旅遊相片分享網站！</h2>
+  <p>這裡提供了多個旅遊地點的相片、歷史、文化以及實用資訊。</p>
+</div>
+
+<div class="content" id="destination1" class="country">
+  <h2>旅遊地點1：日本</h2>
+  <img src="Assignment-01/pic/WechatIMG41.jpg" alt="Japan">
+  <p>日本是一個充滿文化和現代魅力的國家，擁有櫻花、寺廟和現代建築。</p>
+</div>
+
+<div class="content" id="destination2" class="country">
+  <h2>旅遊地點2：義大利</h2>
+  <img src="italy.jpg" alt="Italy">
+  <p>義大利以其古老的歷史、美食和藝術聞名於世，有許多世界遺產和美麗的風景。</p>
+</div>
+
+<div class="content" id="destination3" class="country">
+  <h2>旅遊地點3：紐西蘭</h2>
+  <img src="new-zealand.jpg" alt="New Zealand">
+  <p>紐西蘭擁有壯麗的自然景觀，包括雄偉的山脈、湖泊和活火山，是戶外活動愛好者的天堂。</p>
+</div>
+
+<div class="content" id="destination4" class="country">
+  <h2>旅遊地點4：埃及</h2>
+  <img src="egypt.jpg" alt="Egypt">
+  <p>埃及擁有悠久的歷史和文化遺產，如金字塔和尼羅河，是歷史愛好者的絕佳選擇。</p>
+</div>
+
+<div class="content" id="about">
+
+</body>
+<footer class="text-zinc-500 border-t">
+    <div class="max-w-screen-lg mx-auto px-5 py-10">
+        <div class="relative [&amp;>.prose]:text-sm">
+<div class="xlog-post-content prose"><h2>關於本網站</h2>
+    <p>是一個旨在分享個人旅行經驗和相片的網站，希望能將美好的旅遊體驗與大家一同分享。</p></div>
+<span>© </span>
+<a class="hover:text-accent" href="/"><span>Eureka</span></a>
+
+ <!-- 返回頂部按鈕 -->
+ <div class="back-to-top">&#8593;</div> <!-- 使用向上的箭頭符號 -->
+
+</footer>
+</html>
