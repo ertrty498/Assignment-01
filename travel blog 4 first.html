@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Blog</title>
+<!-- 添加 favicon 链接 -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family:"Gill Sans", sans-serif;
       margin: 0;
       padding: 0;
     }
+
     header {
-      background-color: #333;
+      background-color: #646363;
       color: #fff;
       text-align: center;
       padding: 1rem;
@@ -40,8 +44,11 @@
     }
     nav a:hover {
       background-color: #ddd;
-      color: #000;
+      color: #000000;
     }
+    .message-board {
+  margin: 30px 20px auto 20px; /* 上右下左边距分别为30px, 20px, 自动, 20px */
+}
     .content {
       padding: 20px;
     }
@@ -55,8 +62,54 @@
       border-radius: 5px;
       margin-bottom: 10px;
     }
-    /* 返回頂部按鈕樣式 */
-    .back-to-top {
+    .larger-text {
+    font-size: 24px; /* 您可以根据需要设置合适的字体大小 */
+    }
+    .custom-font {
+    font-family: 'STHeitiTC-Medium', sans-serif; /* 示例字体，您可以替换为您想设置的任何字体 */
+}
+    .custom-font2 {
+    font-family: 'Abject Failure', sans-serif; /* 示例字体，您可以替换为您想设置的任何字体 */
+}
+.transparent-text {
+    color: rgba(102, 100, 100, 0.8); /* 黑色文字，透明度为0.5 */
+}
+.pure-white-glow-text {
+    text-shadow:
+        0 0 10px #fff, /* 第一层纯白光晕 */
+        0 0 20px #fff, /* 第二层纯白光晕 */
+        0 0 30px #fff, /* 第三层纯白光晕 */
+        0 0 40px #fff, /* 第四层纯白光晕 */
+        0 0 50px #fff; /* 第五层纯白光晕 */
+}
+.no-underline-link {
+  /* 去除下划线 */
+  text-decoration: none;
+  /* 设置默认颜色，可以根据需要调整 */
+  color: rgb(60, 60, 227);
+  /* 允许颜色过渡效果 */
+  transition: color 0.3s ease;
+}
+
+.no-underline-link:hover {
+  /* 鼠标悬停时的颜色，这里设置为淡蓝色 */
+  color: rgba(0, 128, 255, 0.8);
+  /* 可以根据需要调整渐变效果的时间和方式 */
+}
+.a {
+    color: #2509c1; /* 图标颜色 */
+    margin-right: 40px; /* 图标间间距 */
+    text-decoration: none; /* 移除链接下划线 */
+}
+/* 可选：为了让最后一个图标右侧也有同样的间距，或避免不必要的间距 */
+.social-icons a:last-child {
+    margin-right: 0; /* 移除最后一个图标的右侧间距 */
+}
+.social-icons a:hover {
+    color: #3e96ee; /* 鼠标悬停时的颜色 */
+}
+        /* 返回頂部按鈕樣式 */
+        .back-to-top {
             position: fixed; /* 固定位置 */
             bottom: 20px; /* 距離底部的距離 */
             right: 20px; /* 距離右側的距離 */
@@ -77,27 +130,9 @@
         .back-to-top:hover {
             opacity: 1; /* 滑鼠懸停時完全不透明 */
         }
+        
+
 </style>
-<script>
-    // 當用戶滾動到一定距離時顯示返回頂部按鈕
-    window.addEventListener('scroll', function() {
-        var backToTop = document.querySelector('.back-to-top');
-        if (window.pageYOffset > 100) { // 可調整此值來決定何時顯示按鈕
-            backToTop.style.display = 'block';
-        } else {
-            backToTop.style.display = 'none';
-        }
-    });
-
-    // 點擊按鈕後平滑返回頂部
-    document.querySelector('.back-to-top').addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth' // 平滑滾動效果
-        });
-    });
-
-</script>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
@@ -112,21 +147,39 @@ background-color: #f8f8f8; /* 淡灰色 */
   background-image:
     repeating-linear-gradient(
       90deg, /* 水平方向的线条 */
-      rgb(244, 240, 214) 0.2%, /* 线条颜色，透明度0.2让线条更淡 */
-      rgb(244, 240, 214)10px, /* 每个线条的宽度和间隔 */
+      rgb(237, 236, 235) 0.2%, /* 线条颜色，透明度0.2让线条更淡 */
+      rgb(237, 236, 235)10px, /* 每个线条的宽度和间隔 */
       transparent 10px,
       transparent 20px
     ),
     repeating-linear-gradient(
       0deg, /* 垂直方向的线条 */
-      rgb(244, 240, 214) 0%, 
-      rgb(244, 240, 214)10px, 
+      rgb(237, 236, 235) 0%, 
+      rgb(237, 236, 235)10px, 
       transparent 10px,
       transparent 20px
     );
 }
+img {
+    box-shadow: 12px 12px 15px rgba(0, 0, 0, 0.3);
+}
+/* 默认状态下图片的样式 */
+.image-container img {
+    transition: filter 0.3s ease; /* 添加过渡效果，使变化更平滑 */
+  }
 
+  /* 鼠标悬停时图片的样式 */
+  .image-container img:hover {
+    filter: brightness(50%); /* 将图片亮度降低至50%，实现变暗效果 */
+  }
+footer {
+    border-top: 2px solid #747171cf; /* 添加一个上边框作为分割线，颜色为淡灰色 */
+    padding-top: 1rem; /* 可选，为footer内容与分割线之间添加一些间距 */
+    text-align: center; /* 文字水平居中 */
+}
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 
@@ -144,56 +197,120 @@ background-color: #f8f8f8; /* 淡灰色 */
 </nav>
 
 <div class="content" id="home">
-  <h2>歡迎來到旅遊相片分享網站！</h2>
-  <p>這裡提供了多個旅遊地點的相片、歷史、文化以及實用資訊。</p>
+  <h2 class="high-contrast-text" class="pure-white-glow-text">歡迎嚟到旅遊分享網站！</h2>
+  <p  class="transparent-text"><i class="far fa-quote-left"></i>  這裡提供了多個旅遊地點的相片、歷史、文化以及實用資訊。  <i class="far fa-quote-right"></i></p>
 </div>
 
-<div class="content" id="destination1" class="country" style="font-weight: bold;">
+<div class="content" id="destination1" class="country">
   <h2>Side 1：Japan</h2>
-  <img src="https://ik.imagekit.io/tvlk/blog/2018/08/Tokyo-Kyoto-367585043.jpg" width="1240px"alt="Japan">
-  <p>日本：東瀛風情，古韻今風的完美交融
-漫步在日本的街头，每一步都是对传统与现代交织美学的深刻体验。从东京的霓虹闪烁到京都的古刹幽静，这个国度以它独有的方式讲述着过去与未来的对话。春日里，樱花如霞，整个国家被粉嫩的色彩温柔包裹；秋风起，枫叶似火，层林尽染，美得让人心醉。品尝一口新鲜的寿司，感受匠人精神在舌尖的传承；参加一次茶道体验，体会禅意生活的宁静与深远。日本，一个让人既感受到科技脉动又沉醉于古典之美的地方。</p>
-#日本是一個充滿文化和現代魅力的國家，擁有櫻花、寺廟和現代建築。
-</p>
+  </i>
+  <a href="https://www.japan.travel/tw/tw/" target="_blank">
+  <div class="image-container"><img src="https://ik.imagekit.io/tvlk/blog/2018/08/Tokyo-Kyoto-367585043.jpg" width="1240px"alt="Japan"></a></div>
+  <p class="larger-text"class="custom-font"><i class="far fa-map-marker-alt"></i> 日本：東瀛風情，古韻今風的完美交融</p>
+  漫步在日本的街頭，每一步都是對傳統與現代交織美學的深刻體驗。從東京的霓虹閃爍到京都的古剎幽靜，這個國度以它獨有的方式講述過去與未來的對話。春日里，櫻花如霞，整個國家被粉嫩的色彩溫柔包裹；秋風起，楓葉似火，層林盡染，美得讓人心醉。品嚐一口新鮮的壽司，感受匠人精神在舌尖的傳承；參加一次茶道體驗，體會禪意生活的寧靜與深遠。日本，一個讓人既感受到科技脈動又沉醉於古典之美的地方。 </p>
+  #日本是一個充滿文化和現代魅力的國家，擁有櫻花、寺廟和現代建築。
+  <ul><i class="far fa-map-pin" ></i> -日本熱門地點- </ul>
+  <li><a class="no-underline-link" href="https://www.kiyomizudera.or.jp">京都清水寺</a>：位於京都東部音羽山的山腰，是日本最古老的佛教寺廟之一，以其壯觀的木製舞台和清泉聞名。每年櫻花季和紅葉季吸引無數遊客前來觀賞，感受古都的靜謐與美麗。 </il>
+ 
+  <li><a class="no-underline-link" href="https://www.tokyodisneyresort.jp/tc/tdl">東京迪士尼樂園</a>：作為亞洲首座迪士尼主題樂園，它分為七個主題園區，提供豐富的遊樂設施和表演，適合全家大小一同享受夢幻般的歡樂時光。 </li>
+ 
+  <li><a class="no-underline-link" href="https://www.klook.com/zh-TW/blog/fujiyama-travel/">富士山</a>：作為日本的象徵，富士山不僅是登山愛好者的聖地，也是攝影愛好者的天堂。週邊的五湖地區更是四季皆宜的旅遊勝地，尤其是夏季的登山季節和冬季的雪景。 </li></p>
 </div>
 
 <div class="content" id="destination2" class="country">
   <h2>Side 2：Italy</h2>
-  <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_433413835v2.jpg" width="1240px"alt="Italy">
-  <p>意大利：浪漫之都，艺术与美食的双重盛宴
-意大利，一个名字就足以让人联想到浪漫与艺术的国度。罗马的历史遗迹诉说着帝国的辉煌，威尼斯的水道则轻吟着浪漫的旋律。在这里，每一座城市都是一幅流动的画卷，从佛罗伦萨文艺复兴时期的辉煌，到比萨斜塔的奇趣，再到那不勒斯海岸线的壮丽。而意大利的美食，更是让人难以忘怀——一盘正宗的意大利面，搭配上醇厚的红酒，或是简单一块比萨饼，都能让你味蕾绽放，仿佛在味觉的世界里进行了一场穿越时空的旅行。</p>
-#義大利以其古老的歷史、美食和藝術聞名於世，有許多世界遺產和美麗的風景。
-  </p>
+  <a href="https://www.klook.com/zh-TW/blog/tip-30-place-5-city-must-visit-italy/" target="_blank">
+  <div class="image-container"><img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_433413835v2.jpg" width="1240px"alt="Italy"></a></div>
+  <p class="larger-text"class="custom-font"><i class="far fa-map-marker-alt"></i> 義大利：浪漫之都，藝術與美食的雙重盛宴</p>
+  <p class="pure-white-glow-text">義大利，一個名字就足以讓人聯想到浪漫與藝術的國度。羅馬的歷史遺跡訴說著帝國的輝煌，威尼斯的水道輕吟著浪漫的旋律。在這裡，每一座城市都是一幅流動的畫卷，從佛羅倫薩文藝復興時期的輝煌，到比薩斜塔的奇趣，再到那不勒斯海岸線的壯麗。而義大利的美食，更是讓人難以忘懷——一盤正宗的意大利麵，搭配上醇厚的紅酒，或者簡單一塊比薩餅，都能讓你味蕾綻放，彷彿在味覺的世界裡進行了一場穿越時空的旅行。  </p>
+  #義大利以其古老的歷史、美食和藝術聞名於世，有許多世界遺產和美麗的風景。</p>
+  <ul><i class="far fa-map-pin" ></i> -義大利熱門地點- </ul>
+  <li class="pure-white-glow-text">羅馬競技場：這座古老而雄偉的建築是古羅馬帝國輝煌的象徵，曾是舉辦角鬥士比賽和其他公眾活動的場所。其殘缺的美讓人遙想羅馬帝國的輝煌歷史。 </il>
+ 
+  <li class="pure-white-glow-text">威尼斯水城：被譽為“水上都市”，威尼斯由118個小島組成，通過橋樑相連，沒有汽車，只有船隻穿梭其間。聖馬可廣場和大運河是必遊之地，體驗獨特的浪漫風格。 </li>
+ 
+  <li class="pure-white-glow-text"><a class="no-underline-link" href="https://www.bring-you.info/zh-tw/galleria-degli-uffizi">佛羅倫斯烏菲茲美術館</a>：收藏了大量文藝復興時期的藝術珍品，包括達文西、米開朗基羅和拉斐爾的作品，是藝術愛好者不容錯過的地方。 </li></p>
+
 </div>
 
 <div class="content" id="destination3" class="country">
   <h2>Side 3：New Zea Land</h2>
-  <img src="https://www.neverendingvoyage.com/wp-content/uploads/2022/12/top-beautiful-places-new-zealand-tasman-glacier.jpg" width="1240px"alt="New Zealand">
-  <p>纽西兰：自然的纯净乐章，冒险者的天堂
-纽西兰，一片遗世独立的净土，被誉为“世界的尽头”。这里拥有令人窒息的自然风光，从雄伟的南阿尔卑斯山脉到清澈见底的湖泊，从广袤无垠的草原到神秘莫测的峡湾。踏上霍比特人的故乡——玛塔玛塔，仿佛穿越进了《指环王》的奇幻世界。热爱探险的你，不妨尝试蹦极跳、喷射快艇或是在皇后镇体验滑雪的刺激，纽西兰总能以它那未被污染的自然美景和极限运动的魅力，激发你内心深处的探索欲望。</p>
-#紐西蘭擁有壯麗的自然景觀，包括雄偉的山脈、湖泊和活火山，是戶外活動愛好者的天堂。
-  </p>
+  <a href="https://hk.trip.com/travel-guide/destination/new-zealand-100078/" target="_blank">
+  <div class="image-container"><img src="https://www.neverendingvoyage.com/wp-content/uploads/2022/12/top-beautiful-places-new-zealand-tasman-glacier.jpg" width="1240px"alt="New Zealand"></a></div>
+  <p class="larger-text"class="custom-font"><i class="far fa-map-marker-alt"></i> 紐西蘭：大自然的純淨樂章，冒險者的天堂</p>
+  紐西蘭，一片遺世獨立的淨土，被譽為「世界的盡頭」。這裡有令人窒息的自然風光，從雄偉的南阿爾卑斯山脈到清澈見底的湖泊，從廣袤無垠的草原到神秘的峽灣。踏上哈比人的故鄉－瑪塔瑪塔，彷彿穿越進了《魔戒》的奇幻世界。熱愛探險的你，不妨嘗試蹦極跳、噴射快艇或是在皇后鎮體驗滑雪的刺激，紐西蘭總能以它那未被污染的自然美景和極限運動的魅力，激發你內心深處的探索慾望。 </p>
+  #紐西蘭擁有壯麗的自然景觀，包括雄偉的山脈、湖泊和活火山，是戶外活動愛好者的天堂。
+  <ul><i class="far fa-map-pin" ></i> -紐西蘭熱門地點- </ul>
+  <li><a class="no-underline-link" href="https://viviantrip.tw/the-10-best-things-to-do-in-queenstown/">皇后鎮</a>：位於南島，四周環山，緊鄰瓦卡蒂普湖，是極限運動愛好者的天堂，如高空彈跳、噴射快艇等。同時，也是《魔戒》系列電影的拍攝地之一，風景如畫。 </il>
+ 
+  <li>米爾福德峽灣：紐西蘭最著名的自然景觀之一，巨大的岩石峭壁從海面直衝雲霄，瀑布從懸崖上飛流直下，乘坐遊船穿行其中，感受大自然的鬼斧神工。 </li>
+ 
+  <li><a class="no-underline-link" href="https://viviantrip.tw/new-zealand-hobbiton-village/">霍比特村</a>：位於北島的瑪塔瑪塔，是『哈比人』和『魔戒』電影的拍攝基地，遊客可以參觀精心復原的哈比人小屋，沉浸於托爾金筆下的中土世界。 </li></p>
+
 </div>
 
 <div class="content" id="destination4" class="country">
   <h2>Side 4：Egypt</h2>
-  <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1037036482v2.jpg" width="1240px"alt="Egypt">
-  <p>埃及：时光的低语，古老文明的永恒回响
-埃及，一个名字便能唤醒千年记忆的地方。金字塔与狮身人面像静默地守护着这片神秘的土地，它们是古埃及文明不朽的象征。尼罗河悠悠流过，滋养了两岸的绿洲，也孕育了伟大的法老文明。走进卢克索的神庙，每一砖每一瓦都刻写着历史的痕迹。夜幕降临时，乘坐热气球飘浮在帝王谷上空，俯瞰这千年的沧桑变迁，那一刻，时间仿佛凝固，只留下你与那些古老的传说，在星空下对话。埃及，一个让人心生敬畏，又充满无限遐想的古老国度。 </p>
+  <a href="https://hk.trip.com/travel-guide/destination/egypt-100030/" target="_blank">
+  <div class="image-container"><img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1037036482v2.jpg" width="1240px"alt="Egypt"></a></div>
+  <p class="larger-text"class="custom-font"><i class="far fa-map-marker-alt"></i> 埃及：時光的低語，古老文明的永恆迴響</p>
+  埃及，一個名字便能喚醒千禧年記憶的地方。金字塔與獅身人面像靜默地守護著這片神祕的土地，它們是古埃及文明不朽的象徵。尼羅河悠悠流過，滋養了兩岸的綠洲，也孕育了偉大的法老文明。走進盧克索的神廟，每一磚每一瓦都刻寫著歷史的痕跡。當夜幕降臨時，乘坐熱氣球飄浮在帝王谷上空，俯瞰這千年的滄桑變遷，那一刻，時間彷彿凝固，只留下你與那些古老的傳說，在星空下對話。埃及，一個讓人心生敬畏，又充滿無限遐想的古老國度。 </p>
 #埃及擁有悠久的歷史和文化遺產，如金字塔和尼羅河，是歷史愛好者的絕佳選擇。
-</p>
-</div>
+<ul><i class="far fa-map-pin" ></i> -埃及熱門地點- </ul>
+<li>吉薩金字塔群：包括胡夫金字塔、卡夫拉金字塔和門卡烏拉金字塔，以及神祕的獅身人面像，是古埃及文明的象徵，也是世界七大奇蹟之一。 </il>
+
+<li>盧克索古城：擁有許多古埃及遺跡，如卡納克神廟和盧克索神廟，展現了古埃及的宗教文化和建築藝術，是探索法老時代歷史的重要地點。 </li>
+
+<li>阿斯旺水壩：位於尼羅河上游，是世界上最大的水壩之一，不僅具有重要的水利功能，也成為了埃及的一個重要觀光景點，附近還有阿布辛拜勒神廟等古蹟。 </li></p>
+
+
+<div  class="content" id="destination1" class="country">
+  <h2>guestbook</h2>
+    <form class="message-board" action="submit_message.php" method="post">
+        <textarea name="content" placeholder="請輸入留言內容"></textarea>
+        <button type="submit">submit</button>
+    </form>
+    <div id="messagesContainer">
+    </div>
 
 <div class="content" id="about">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 當用戶滾動到一定距離時顯示返回頂部按鈕
+        window.addEventListener('scroll', function() {
+            var backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 100) { // 可調整此值來決定何時顯示按鈕
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
 
+        // 點擊按鈕後平滑返回頂部
+        document.querySelector('.back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滾動效果
+            });
+        });
+    });
+</script>
 </body>
+
 <footer class="text-zinc-500 border-t">
     <div class="max-w-screen-lg mx-auto px-5 py-10">
         <div class="relative [&amp;>.prose]:text-sm">
-<div class="xlog-post-content prose"><h2>關於本網站</h2>
-    <p>是一個旨在分享個人旅行經驗和相片的網站，希望能將美好的旅遊體驗與大家一同分享。</p></div>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/yourusername/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.github.com/yourusername/" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <!-- 其他底部内容 -->
+<div class="xlog-post-content prose"><h5>-關於本網站-</h5>
+<p class="transparent-text"><i class="far fa-quote-left"></i>  是一個旨在分享個人旅行經驗和相片的網站，希望能將美好的旅遊體驗與大家一同分享。  <i class="far fa-quote-right"></i></p></div>
 <span>© </span>
-<a class="hover:text-accent" href="/"><span>Eureka</span></a>
+<a class="hover:text-accent"><span>Eureka 2024</span></a>
 
  <!-- 返回頂部按鈕 -->
  <div class="back-to-top">&#8593;</div> <!-- 使用向上的箭頭符號 -->
