@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Blog</title>
+<!-- 添加 favicon 链接 -->
+<link rel="icon" href="/icon/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/icon/favicon-32x32.png" type="image/png">
+<!-- <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script> -->
+  <style>
+    body {
+      font-family:"Gill Sans", sans-serif;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+    }
+    .centered-text {
+        text-align: center;
+    }
+
+    .container {
+      display: flex; /* 启用Flexbox布局 */
+      padding: 20px;
+    justify-content: left; /* 水平居中 */
+    align-items: left; /* 垂直居中 */
+    height:100%; /* 让容器高度充满视口，确保垂直居中有效 */
+    width: 100%; /* 保持容器宽度为全宽 */
+}
+
+.boxed-text {
+    background-color: #c1cbac; /* 灰綠色背景 */
+    padding: 20px; /* 内边距，让文字有空间 */
+    border-radius: 10px; /* 圓角效果 */
+    color: rgb(0, 0, 0); /* 文字顏色 */
+    text-align:left; /* 文字居中对齐 */
+    -moz-box-align: center;
+    max-width: 70%; /* 可選，限制最大寬度以適應不同屏幕 */
+}
+    header {
+      background-color: #fbe0c3;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #7d8e95;
+      overflow: hidden;
+      border-bottom: 1px solid #7d8e95;
+      text-align: center;
+      /* padding: 1rem 1; */
+      /* padding: 10px 20px; */
+      border-radius: 20px;
+      /* margin: 0 10px; */
+    }
+    nav a {
+      float: left;
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 46px;
+      text-decoration: none;
+      font-size:larger;
+      /* margin-right: 40px; */
+    }
+    nav a:hover {
+      background-color: #344648;
+      color: #000000;
+    }
+    
+    .area-guide {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* 控制图片间的间隔 */
+    justify-content: center; /* 图片居中显示 */
+}
+
+.area-guide a {
+    flex: 0 0 calc(33.33% - 2rem); /* 三列布局，减去间隔 */
+    overflow: hidden; /* 隐藏超出部分，用于图片裁剪效果 */
+}
+
+.area-guide img {
+    width: 100%;
+    height: auto; /* 保持图片的宽高比 */
+    object-fit: cover; /* 使图片填充容器并保持比例 */
+    transition: transform .2s ease-in-out; /* 平滑的过渡效果 */
+}
+
+.area-guide a:hover img {
+    transform: scale(1.1); /* 鼠标悬停时放大图片 */
+}
+
+    /* 下拉菜单容器 */
+    .dropdown {
+      float: right; /* 或根据需要调整为display:inline-block; 以避免浮动带来的影响 */
+      overflow: hidden;
+    }
+
+    /* 下拉菜单按钮 */
+    .dropdown .dropbtn {
+        font-size: 16px;    
+        border: none;
+        outline: none;
+        color: white;
+        padding: 16px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        /* 添加这行来设置下拉菜单内容的圆角 */
+        border-radius: 5px; /* 你可以根据需要调整圆角的大小 */
+    }
+    /* 下拉内容 */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        /* 添加这行来设置下拉菜单内容的圆角 */
+        border-radius: 5px; /* 你可以根据需要调整圆角的大小 */
+    }
+    /* 下拉菜单项 */
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align:center;
+        /* 添加这行来设置下拉菜单内容的圆角 */
+        border-radius: 5px; /* 你可以根据需要调整圆角的大小 */
+    }
+    /* 在鼠标悬停时显示下拉菜单 */
+    .dropdown:hover .dropdown-content {
+        display: block;
+        
+    }
+    
+    .message-board {
+  margin: 30px 20px auto 20px; /* 上右下左边距分别为30px, 20px, 自动, 20px */
+}
+    .content {
+      padding: 20px;
+    }
+    .country {
+      margin-bottom: 20px;
+    }
+    .country img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .larger-text {
+    font-size: 24px; /* 您可以根据需要设置合适的字体大小 */
+    }
+    .custom-font {
+    font-family: 'STHeitiTC-Medium', sans-serif; /* 示例字体，您可以替换为您想设置的任何字体 */
+}
+    .custom-font2 {
+    font-family: 'Abject Failure', sans-serif; /* 示例字体，您可以替换为您想设置的任何字体 */
+}
+.transparent-text {
+    color: rgba(57, 56, 56, 0.8); /* 黑色文字，透明度为0.5 */
+}
+.pure-white-glow-text {
+    text-shadow:
+        10px 0 10px #fff, /* 第一层纯白光晕 */
+        10px 0 20px #fff, /* 第二层纯白光晕 */
+        10px 0 30px #fff, /* 第三层纯白光晕 */
+        10px 0 40px #fff, /* 第四层纯白光晕 */
+        10px 0 50px #fff; /* 第五层纯白光晕 */
+}
+.no-underline-link {
+  /* 去除下划线 */
+  text-decoration: none;
+  /* 设置默认颜色，可以根据需要调整 */
+  color: rgb(102, 102, 240);
+  /* 允许颜色过渡效果 */
+  transition: color 0.3s ease;
+}
+
+.no-underline-link:hover {
+  /* 鼠标悬停时的颜色，这里设置为淡蓝色 */
+  color: rgba(102, 176, 250, 0.8);
+  /* 可以根据需要调整渐变效果的时间和方式 */
+}
+.a {
+    color: #6d57ec; /* 图标颜色 */
+    text-decoration: none; /* 移除链接下划线 */
+}
+
+/* 基础样式 */
+.social-icons {
+    position: relative; /* 设置为相对定位，以便绝对定位的伪元素相对于它定位 */
+}
+/* 基础样式 */
+.social-icons .icon {
+    position: relative; /* 为每个图标添加相对定位，以便伪元素相对于图标定位 */
+    display: inline-block; /* 确保图标以块状元素形式显示，便于控制布局 */
+    margin-right: 35px; /* 调整数字以改变icon间距大小 */
+}
+/* 隐藏的标签内容，初始化状态 */
+.social-icons .icon::before {
+    content: attr(data-account-id); /* 从data-account-id属性获取文本内容 */
+    position: absolute; /* 设置为绝对定位，以便控制其确切位置 */
+    top: -2em; /* 初始时设置在图标上方，具体数值可能需根据实际情况调整 */
+    left: 50%; /* 左侧居中对齐，通过transform进一步微调 */
+    transform: translateX(-50%);
+    background-color: black; /* 气泡背景色为黑色 */
+    color: white; /* 文字颜色为白色 */
+    padding: 0.5em 1em; /* 内边距，根据需要调整 */
+    border-radius: 0.5em; /* 圆角效果，模拟气泡形状 */
+    white-space: nowrap; /* 防止文本换行 */
+    opacity: 0; /* 默认不显示 */
+    transition: opacity 0.3s ease, top 0.3s ease; /* 平滑过渡效果 */
+    z-index: 1; /* 确保气泡在图标之上 */
+}
+
+/* 鼠标悬停时显示气泡 */
+.social-icons .icon:hover::before {
+    top: -3em; /* 在悬停时向下移动一点，模拟浮现效果，数值根据气泡大小和期望位置调整 */
+    opacity: 1; /* 显示气泡 */
+}
+/* 基础样式，如果有共通样式可以放在这里 */
+.social-icons a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    /* 其他基础样式 */
+}
+/* 为每个图标单独指定颜色 */
+.icon-facebook {
+    color: #3b5998; /* Facebook 蓝色 */
+}
+.icon-twitter {
+    color: #1da1f2; /* Twitter 蓝色 */
+}
+.icon-instagram {
+    color: #e1306c; /* Instagram 粉色 */
+}
+.icon-youtube {
+    color: #f00; 
+}
+.icon-tiktok {
+    color: rgb(0, 0, 0);
+}
+/* 可选：为了让最后一个图标右侧也有同样的间距，或避免不必要的间距 */
+.social-icons a:last-child {
+    margin-right: 0; /* 移除最后一个图标的右侧间距 */
+}
+.social-icons a:hover {
+    color: #80befc; /* 鼠标悬停时的颜色 */
+}
+        /* 返回頂部按鈕樣式 */
+        .back-to-top {
+            position: fixed; /* 固定位置 */
+            bottom: 20px; /* 距離底部的距離 */
+            right: 20px; /* 距離右側的距離 */
+            font-size: 24px; /* 字體大小 */
+            width: 50px; /* 按鈕寬度 */
+            height: 50px; /* 按鈕高度 */
+            line-height: 50px; /* 文字垂直居中 */
+            text-align: center; /* 文字水平居中 */
+            color: white; /* 文字顏色 */
+            background-color: #333; /* 按鈕背景顏色 */
+            cursor: pointer; /* 鼠標懸停時顯示手型 */
+            border-radius: 50%; /* 圓形按鈕 */
+            opacity: 0.7; /* 透明度 */
+            transition: opacity 0.3s ease; /* 過渡效果 */
+            display: none; /* 默認隱藏，當滾動時顯示 */
+            z-index: 999; /* 確保按鈕在最上層 */
+        }
+        .back-to-top:hover {
+            opacity: 1; /* 滑鼠懸停時完全不透明 */
+        }
+        
+
+</style>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
+  </style>
+  <style>
+    
+    body {
+      font-family: 'Playwrite CO', sans-serif;
+      /* 设置基础背景颜色 */
+      background-color: #ffffff; /* 淡灰色 */
+  
+      /* 添加网格背景 */
+      background-image:
+      repeating-linear-gradient(
+      90deg, /* 水平方向的线条 */
+      rgb(255, 238, 220) 0.2%, /* 线条颜色，透明度0.2让线条更淡 */
+      rgb(255, 238, 220)10px, /* 每个线条的宽度和间隔 */
+      transparent 10px,
+      transparent 20px
+    ),
+     repeating-linear-gradient(
+      0deg, /* 垂直方向的线条 */
+      rgb(255, 238, 220) 0%, 
+      rgb(255, 238, 220)10px, 
+      transparent 10px,
+      transparent 20px
+    );
+}
+img {
+    box-shadow: 12px 12px 15px rgba(0, 0, 0, 0.3);
+}
+/* 默认状态下图片的样式 */
+.image-container img {
+    transition: filter 0.3s ease; /* 添加过渡效果，使变化更平滑 */
+  }
+
+  /* 鼠标悬停时图片的样式 */
+  .image-container img:hover {
+    filter: brightness(50%); /* 将图片亮度降低至50%，实现变暗效果 */
+  }
+footer {
+    border-top: 2px solid #747171cf; /* 添加一个上边框作为分割线，颜色为淡灰色 */
+    padding-top: 1rem; /* 可选，为footer内容与分割线之间添加一些间距 */
+    text-align: center; /* 文字水平居中 */
+}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+<header>
+ <div><h1 style="font-size:60px">Travel Blog</h1></div>
+</header>
+
+<nav>
+  <a href="travel_blog_4_first.html">Home</a>
+  <a href="travel_blog_4_first.html#destination1">Side 1</a>
+  <a href="travel_blog_4_first.html#destination2">Side 2</a>
+  <a href="travel_blog_4_first.html#destination3">Sdie 3</a>
+  <a href="travel_blog_4_first.html#destination4">Sdie 4</a>
+  <a href="travel_blog_4_first.html#about">about</a>
+    <!-- 新增的下拉菜单放在最左边 -->
+    <div class="dropdown">
+      <button class="dropbtn">Country Introduction</button>
+      <div class="dropdown-content">
+          <a href="japan.html">🇯🇵 Japan</a>
+          <a href="italy.html">🇮🇹 Italy</a>
+          <a href="newzealand.html">🇳🇿 New Zea Land</a>
+          <a href="egypt.html">🇪🇬 Egypt</a>
+      </div>
+  </div>
+</nav>
+
+<!-- 主要內容區塊，包含大圖背景及介紹文字 -->
+<main>
+  <section class="destination-hero">
+      <h1 class="centered-text"><i class="far fa-map-marker-alt"></i class="pure-white-glow-text"> 北海道 - 日本的北國風情</h1>
+          <p class="centered-text">北海道以其壯麗的自然風光、豐富的四季景致及獨特的文化體驗吸引著全世界的旅人。</p>
+
+  <!-- 介紹文字及更多內容區塊 -->
+  <section class="destination-info">
+    <div class="container">
+      <div class="boxed-text">
+          <h2>探索北海道的理由</h2>
+          <ul>
+              <li>絕美自然景觀：富良野的薰衣草田、美瑛的拼布之路</li>
+              <li>美食天堂：新鮮海產、拉麵、農產直送的美味</li>
+              <li>四季活動：滑雪、溫泉、花季、秋季賞楓</li>
+          </ul>
+          北海道的大自然適合多種戶外活動，而在山岳湖泊圍繞下的北海道各城市，更有多元化的美食與文化。
+北海道全年都有各種豐富資源。夏天溫和的氣候，最適合探索翠綠山丘和國家公園。滿佈北海道的湖泊、河川和山岳，是行山、玩踩越野單車、獨木舟及漂流等多種活動的理想地方。在天然棲息地欣賞野生動物和鳥類，或在如詩如畫的景色下，浸泡火山的泉水。冬天可以享受北海道眾多度假村的世界級滑雪場。另類的冬季運動，例如踏雪板、狗拉雪撬、雪上電單車等也可以在這裡找到，還可以參加日本其中一個最盛大的祭典：札幌雪祭。
+交通方式
+從日本各主要機場乘搭飛機，飛往札幌附近的​​​​​​​新千歲機場便可到達北海道。從東京出發的直航班機大約需要 90分鐘，另有多班國際航機。從東京可以乘搭新幹線，日本鐵路通票適用於乘搭新幹線。
+搭飛機是前往北海道最快捷的方法。由東京到札幌新千歲機場的班機，大約需時 90 分鐘。從東京出發乘搭新幹線，大約 8 小時。從東京搭 JR 東北/北海道新幹線，抵達新函館，再轉乘北斗特快車到札幌。本州也有一些便宜的長途渡輪前往札幌外港。新潟、大洗（茨城縣）、仙台、名古屋、舞鶴（京都府）及敦賀（福井縣），都有前往北海道的渡輪。
+      </div>
+      <div class="container">
+        <div class="boxed-text">
+          <h2>萬勿錯過</h2>
+          <ul>
+            <li>在新雪谷和留壽都滑雪，這裡是粉雪愛好者的天堂<li>
+            <li>北海道延綿不絕的薰衣草田</li>
+            <li>新鮮海產與農產品：海膽、哈密瓜、雪糕等等</li>
+            <li>未受破壞的北海道國立公園大自然</ul>
+        </div>
+    </div>
+  </section>
+
+  <!-- 其他內容區塊，如旅遊貼士、相關閱讀等 -->
+</main>
+
+<h2 class="centered-text">——AREA GUIDE——</h2>
+
+<div class="area-guide">
+  <a href="https://hokkaido.japandrive.com/en/area">
+      <img src="https://static.cld.navitime.jp/inboundstorage/hkd/contents/lib/img/area/013-1-pc.jpg" alt="Hidaka and Erimo">
+  </a>
+  <a href="https://hokkaido.japandrive.com/en/area">
+      <img src="https://static.cld.navitime.jp/inboundstorage/hkd/contents/lib/img/area/012-1-pc.jpg" alt="Tokachi and Obihiro">
+  </a>
+  <a href="https://hokkaido.japandrive.com/en/area">
+    <img src="https://static.cld.navitime.jp/inboundstorage/hkd/contents/lib/img/area/011-1-pc.jpg" alt="Akan and Kushiro">
+</a>
+<a href="https://hokkaido.japandrive.com/en/area">
+  <img src="https://static.cld.navitime.jp/inboundstorage/hkd/contents/lib/img/area/010-1-pc.jpg" alt="Nemuro and Shiretoko (Rausu)">
+</a>
+<a href="https://hokkaido.japandrive.com/en/area">
+  <img src="https://static.cld.navitime.jp/inboundstorage/hkd/contents/lib/img/area/009-1-pc.jpg" alt="Shiretoko (Shari), Kitami, and Abashiri">
+</a>
+<a href="https://hokkaido.japandrive.com/en/area">
+  <img src="https://static.cld.navitime.jp/inboundstorage/hkd/contents/lib/img/area/007-1-pc.jpg" alt="Asahikawa, Furano, and Biei">
+</a>
+
+  <!-- 更多目的地链接... -->
+</div>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bv_q8SKQGAY?si=G2PE-6nTUgIBKmog" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p0AF23HOMlQ?si=QY_Yd69FFQVbdsnA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<div  class="content" id="destination1" class="country">
+  <h2>guestbook</h2>
+    <form class="message-board" action="submit_message.php" method="post">
+        <textarea name="content" placeholder="請輸入留言內容"></textarea>
+        <button type="submit">submit</button>
+    </form>
+    <div id="messagesContainer">
+    </div>
+
+<div class="content" id="about">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 當用戶滾動到一定距離時顯示返回頂部按鈕
+        window.addEventListener('scroll', function() {
+            var backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 100) { // 可調整此值來決定何時顯示按鈕
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // 點擊按鈕後平滑返回頂部
+        document.querySelector('.back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滾動效果
+            });
+        });
+    });
+</script>
+</body>
+
+<footer class="text-zinc-500 border-t">
+    <div class="max-w-screen-lg mx-auto px-5 py-10">
+        <div class="relative [&amp;>.prose]:text-sm">
+          <div class="social-icons">
+            <a href="https://www.facebook.com/yourpage" class="icon icon-facebook" data-account-id="123456" target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="https://twitter.com/yourprofile" class="icon icon-twitter" data-account-id="123456" target="_blank"><i class="fa-brands fa-twitter fa-lg"></i></a>
+            <a href="https://www.instagram.com/yourusername/" class="icon icon-instagram" data-account-id="123456" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://www.github.com/yourusername/" class="icon icon-github" data-account-id="123456" target="_blank" ><i class="fa-brands fa-github fa-lg"></i></a>
+            <a href="https://www.youtube.com/@BYT-CN/videos" class="icon icon-youtube" data-account-id="123456" target="_blank"><i class="fa-brands fa-youtube fa-lg"></i></a>
+            <a href="https://www.tiktok.com/about" class="icon icon-tiktok" data-account-id="123456" target="_blank"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+        </div>
+        <!-- 其他底部内容 -->
+<div class="xlog-post-content prose"><h5>-關於本網站-</h5>
+<p class="transparent-text"><i class="far fa-quote-left"></i>  是一個旨在分享個人旅行經驗和相片的網站，希望能將美好的旅遊體驗與大家一同分享。  <i class="far fa-quote-right"></i></p></div>
+<span>© </span>
+<a class="hover:text-accent"><span>Eureka 2024</span></a>
+
+ <!-- 返回頂部按鈕 -->
+ <div class="back-to-top">&#8593;</div> <!-- 使用向上的箭頭符號 -->
+
+</footer>
+</html>

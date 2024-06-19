@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Blog</title>
 <!-- 添加 favicon 链接 -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-
+  <link rel="icon" href="/icon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/icon/favicon-32x32.png" type="image/png">
+<!-- <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script> -->
   <style>
     body {
       font-family:"Gill Sans", sans-serif;
@@ -46,6 +48,54 @@
       background-color: #344648;
       color: #000000;
     }
+    
+    /* 下拉菜单容器 */
+    .dropdown {
+      float: right; /* 或根据需要调整为display:inline-block; 以避免浮动带来的影响 */
+      overflow: hidden;
+    }
+
+    /* 下拉菜单按钮 */
+    .dropdown .dropbtn {
+        font-size: 16px;    
+        border: none;
+        outline: none;
+        color: white;
+        padding: 16px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        /* 添加这行来设置下拉菜单内容的圆角 */
+        border-radius: 5px; /* 你可以根据需要调整圆角的大小 */
+    }
+    /* 下拉内容 */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        /* 添加这行来设置下拉菜单内容的圆角 */
+        border-radius: 5px; /* 你可以根据需要调整圆角的大小 */
+    }
+    /* 下拉菜单项 */
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align:center;
+        /* 添加这行来设置下拉菜单内容的圆角 */
+        border-radius: 5px; /* 你可以根据需要调整圆角的大小 */
+    }
+    /* 在鼠标悬停时显示下拉菜单 */
+    .dropdown:hover .dropdown-content {
+        display: block;
+        
+    }
+    
     .message-board {
   margin: 30px 20px auto 20px; /* 上右下左边距分别为30px, 20px, 自动, 20px */
 }
@@ -86,27 +136,82 @@
   /* 去除下划线 */
   text-decoration: none;
   /* 设置默认颜色，可以根据需要调整 */
-  color: rgb(60, 60, 227);
+  color: rgb(102, 102, 240);
   /* 允许颜色过渡效果 */
   transition: color 0.3s ease;
 }
 
 .no-underline-link:hover {
   /* 鼠标悬停时的颜色，这里设置为淡蓝色 */
-  color: rgba(0, 128, 255, 0.8);
+  color: rgba(102, 176, 250, 0.8);
   /* 可以根据需要调整渐变效果的时间和方式 */
 }
 .a {
-    color: #2509c1; /* 图标颜色 */
-    margin-right: 40px; /* 图标间间距 */
+    color: #6d57ec; /* 图标颜色 */
     text-decoration: none; /* 移除链接下划线 */
+}
+
+/* 基础样式 */
+.social-icons {
+    position: relative; /* 设置为相对定位，以便绝对定位的伪元素相对于它定位 */
+}
+/* 基础样式 */
+.social-icons .icon {
+    position: relative; /* 为每个图标添加相对定位，以便伪元素相对于图标定位 */
+    display: inline-block; /* 确保图标以块状元素形式显示，便于控制布局 */
+    margin-right: 35px; /* 调整数字以改变icon间距大小 */
+}
+/* 隐藏的标签内容，初始化状态 */
+.social-icons .icon::before {
+    content: attr(data-account-id); /* 从data-account-id属性获取文本内容 */
+    position: absolute; /* 设置为绝对定位，以便控制其确切位置 */
+    top: -2em; /* 初始时设置在图标上方，具体数值可能需根据实际情况调整 */
+    left: 50%; /* 左侧居中对齐，通过transform进一步微调 */
+    transform: translateX(-50%);
+    background-color: black; /* 气泡背景色为黑色 */
+    color: white; /* 文字颜色为白色 */
+    padding: 0.5em 1em; /* 内边距，根据需要调整 */
+    border-radius: 0.5em; /* 圆角效果，模拟气泡形状 */
+    white-space: nowrap; /* 防止文本换行 */
+    opacity: 0; /* 默认不显示 */
+    transition: opacity 0.3s ease, top 0.3s ease; /* 平滑过渡效果 */
+    z-index: 1; /* 确保气泡在图标之上 */
+}
+
+/* 鼠标悬停时显示气泡 */
+.social-icons .icon:hover::before {
+    top: -3em; /* 在悬停时向下移动一点，模拟浮现效果，数值根据气泡大小和期望位置调整 */
+    opacity: 1; /* 显示气泡 */
+}
+/* 基础样式，如果有共通样式可以放在这里 */
+.social-icons a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    /* 其他基础样式 */
+}
+/* 为每个图标单独指定颜色 */
+.icon-facebook {
+    color: #3b5998; /* Facebook 蓝色 */
+}
+.icon-twitter {
+    color: #1da1f2; /* Twitter 蓝色 */
+}
+.icon-instagram {
+    color: #e1306c; /* Instagram 粉色 */
+}
+.icon-youtube {
+    color: #f00; 
+}
+.icon-tiktok {
+    color: rgb(0, 0, 0);
 }
 /* 可选：为了让最后一个图标右侧也有同样的间距，或避免不必要的间距 */
 .social-icons a:last-child {
     margin-right: 0; /* 移除最后一个图标的右侧间距 */
 }
 .social-icons a:hover {
-    color: #3e96ee; /* 鼠标悬停时的颜色 */
+    color: #80befc; /* 鼠标悬停时的颜色 */
 }
         /* 返回頂部按鈕樣式 */
         .back-to-top {
@@ -138,21 +243,22 @@
   @import url('https://fonts.googleapis.com/css2?family=Playwrite+CO:wght@100..400&display=swap');
   </style>
   <style>
+    
     body {
       font-family: 'Playwrite CO', sans-serif;
-/* 设置基础背景颜色 */
-background-color: #ffffff; /* 淡灰色 */
+      /* 设置基础背景颜色 */
+      background-color: #ffffff; /* 淡灰色 */
   
-  /* 添加网格背景 */
-  background-image:
-    repeating-linear-gradient(
+      /* 添加网格背景 */
+      background-image:
+      repeating-linear-gradient(
       90deg, /* 水平方向的线条 */
       rgb(255, 238, 220) 0.2%, /* 线条颜色，透明度0.2让线条更淡 */
       rgb(255, 238, 220)10px, /* 每个线条的宽度和间隔 */
       transparent 10px,
       transparent 20px
     ),
-    repeating-linear-gradient(
+     repeating-linear-gradient(
       0deg, /* 垂直方向的线条 */
       rgb(255, 238, 220) 0%, 
       rgb(255, 238, 220)10px, 
@@ -194,6 +300,16 @@ footer {
   <a href="#destination3">Sdie 3</a>
   <a href="#destination4">Sdie 4</a>
   <a href="#about">about</a>
+    <!-- 新增的下拉菜单放在最左边 -->
+    <div class="dropdown">
+      <button class="dropbtn">Country Introduction</button>
+      <div class="dropdown-content">
+          <a href="japan.html">🇯🇵 Japan</a>
+          <a href="italy.html">🇮🇹 Italy</a>
+          <a href="newzealand.html">🇳🇿 New Zea Land</a>
+          <a href="egypt.html">🇪🇬 Egypt</a>
+      </div>
+  </div>
 </nav>
 
 <div class="content" id="home">
@@ -301,10 +417,12 @@ footer {
     <div class="max-w-screen-lg mx-auto px-5 py-10">
         <div class="relative [&amp;>.prose]:text-sm">
           <div class="social-icons">
-            <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/yourusername/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.github.com/yourusername/" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.facebook.com/yourpage" class="icon icon-facebook" data-account-id="123456" target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="https://twitter.com/yourprofile" class="icon icon-twitter" data-account-id="123456" target="_blank"><i class="fa-brands fa-twitter fa-lg"></i></a>
+            <a href="https://www.instagram.com/yourusername/" class="icon icon-instagram" data-account-id="123456" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://www.github.com/yourusername/" class="icon icon-github" data-account-id="123456" target="_blank" ><i class="fa-brands fa-github fa-lg"></i></a>
+            <a href="https://www.youtube.com/@BYT-CN/videos" class="icon icon-youtube" data-account-id="123456" target="_blank"><i class="fa-brands fa-youtube fa-lg"></i></a>
+            <a href="https://www.tiktok.com/about" class="icon icon-tiktok" data-account-id="123456" target="_blank"><i class="fa-brands fa-tiktok fa-lg"></i></a>
         </div>
         <!-- 其他底部内容 -->
 <div class="xlog-post-content prose"><h5>-關於本網站-</h5>
